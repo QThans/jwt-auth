@@ -1,9 +1,8 @@
 {
-    "name": "thans/layui-admin-ext-user",
+    "name": "thans/tp-jwt-auth",
     "description": "layui-admi's user extension",
     "type": "library",
     "require": {
-        "thans/layui-admin": "^1.1",
         "lcobucci/jwt": "^3.3"
     },
     "license": "Apache-2.0",
