@@ -44,7 +44,6 @@ class Manager
 
     public function refresh(Token $token)
     {
-
         $payload = $this->decode($token, true);
 
         $this->invalidate($token);
@@ -65,5 +64,3 @@ class Manager
         return $this->blacklist->has($payload);
     }
 }
-
-

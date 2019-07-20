@@ -3,7 +3,6 @@
 
 namespace thans\jwt;
 
-
 class Token
 {
     private $value;

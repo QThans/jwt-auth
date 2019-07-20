@@ -3,12 +3,10 @@
 
 namespace thans\jwt\middleware;
 
-
 use thans\jwt\JWTAuth as Auth;
 
 class BaseMiddleware
 {
-
     protected $auth;
 
     public function __construct(Auth $auth)
@@ -22,5 +20,4 @@ class BaseMiddleware
 
         return $response->header('Authorization', 'Bearer '.$token);
     }
-
 }

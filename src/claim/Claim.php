@@ -2,10 +2,8 @@
 
 namespace thans\jwt\claim;
 
-
 abstract class Claim
 {
-
     protected $name;
 
     private $value;
@@ -38,5 +36,4 @@ abstract class Claim
     {
         return $this->name;
     }
-
 }

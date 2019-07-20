@@ -3,7 +3,6 @@
 
 namespace thans\jwt\parser;
 
-
 use think\Request;
 
 class Parser

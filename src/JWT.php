@@ -29,7 +29,7 @@ class JWT
 
     public function parseToken()
     {
-        if ( ! $token = $this->parser->parseToken()) {
+        if (! $token = $this->parser->parseToken()) {
             throw new JWTException('No token is this request.');
         }
         $this->setToken($token);
@@ -61,7 +61,7 @@ class JWT
     {
         $this->getToken();
 
-        if ( ! $this->token) {
+        if (! $this->token) {
             throw new JWTException('Must have token');
         }
     }
@@ -75,7 +75,6 @@ class JWT
 
     public function refresh()
     {
-
         $this->parseToken();
 
         return $this->manager->refresh($this->token)->get();

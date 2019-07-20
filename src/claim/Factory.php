@@ -52,7 +52,7 @@ class Factory
     public function validate($refresh = false)
     {
         foreach ($this->claim as $key => $claim) {
-            if ( ! $refresh && method_exists($claim, 'validatePayload')) {
+            if (! $refresh && method_exists($claim, 'validatePayload')) {
                 $claim->validatePayload();
             }
             if ($refresh && method_exists($claim, 'validateRefresh')) {
@@ -95,5 +95,4 @@ class Factory
     {
         return time();
     }
-
 }

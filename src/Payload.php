@@ -3,7 +3,6 @@
 
 namespace thans\jwt;
 
-
 use thans\jwt\claim\Factory;
 use thans\jwt\claim\Issuer;
 use thans\jwt\claim\Audience;
@@ -15,7 +14,6 @@ use thans\jwt\claim\Subject;
 
 class Payload
 {
-
     protected $factory;
 
     protected $classMap
