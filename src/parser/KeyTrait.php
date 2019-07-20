@@ -3,7 +3,6 @@
 
 namespace thans\jwt\parser;
 
-
 trait KeyTrait
 {
     private $key = 'token';

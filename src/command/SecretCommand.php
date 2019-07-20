@@ -3,7 +3,6 @@
 
 namespace thans\jwt\command;
 
-
 use think\console\Input;
 use think\console\Output;
 

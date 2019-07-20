@@ -3,7 +3,6 @@
 
 namespace thans\jwt\middleware;
 
-
 use thans\jwt\exception\TokenExpiredException;
 
 class JWTAuthAndRefresh extends BaseMiddleware

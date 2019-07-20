@@ -3,7 +3,6 @@
 
 namespace thans\jwt\claim;
 
-
 class Customer extends Claim
 {
     public function __construct($name, $value)

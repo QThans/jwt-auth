@@ -3,7 +3,6 @@
 
 namespace thans\jwt\claim;
 
-
 use thans\jwt\exception\TokenExpiredException;
 
 class Expiration extends Claim

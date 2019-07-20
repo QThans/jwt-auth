@@ -3,7 +3,6 @@
 
 namespace thans\jwt\provider;
 
-
 use thans\jwt\facade\JWTAuth;
 use thans\jwt\parser\AuthHeader;
 use thans\jwt\parser\Cookie;

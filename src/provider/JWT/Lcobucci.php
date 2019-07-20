@@ -3,7 +3,6 @@
 
 namespace thans\jwt\provider\JWT;
 
-
 use Exception;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Parser;
@@ -22,7 +21,6 @@ use Lcobucci\JWT\Signer\Rsa\Sha512 as RS512;
 use ReflectionClass;
 use thans\jwt\exception\JWTException;
 use thans\jwt\exception\TokenInvalidException;
-
 
 class Lcobucci extends Provider
 {
@@ -76,7 +74,7 @@ class Lcobucci extends Provider
                 .$e->getMessage(), $e->getCode(), $e);
         }
 
-        if ( ! $jwt->verify($this->signer, $this->getVerificationKey())) {
+        if (! $jwt->verify($this->signer, $this->getVerificationKey())) {
             throw new TokenInvalidException('Token Signature could not be verified.');
         }
         return $jwt->getClaims();
@@ -113,11 +111,10 @@ class Lcobucci extends Provider
 
     protected function getSign()
     {
-        if ( ! isset($this->signers[$this->algo])) {
+        if (! isset($this->signers[$this->algo])) {
             throw new JWTException('Cloud not find '.$this->algo.' algo');
         }
 
         return new $this->signers[$this->algo];
     }
-
 }

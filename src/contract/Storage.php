@@ -3,7 +3,6 @@
 
 namespace thans\jwt\contract;
 
-
 interface Storage
 {
     public function set($key, $time = 0);
@@ -11,5 +10,4 @@ interface Storage
     public function get($key);
 
     public function delete($key);
-
 }
