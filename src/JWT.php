@@ -81,6 +81,8 @@ class JWT
         return $this->manager->refresh($this->token)->get();
     }
 
+
+
     public function __call($method, $parameters)
     {
         if (method_exists($this->manager, $method)) {

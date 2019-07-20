@@ -29,10 +29,10 @@ class Manager
         return new Token($token);
     }
 
-    public function decode(Token $token)
+    public function decode(Token $token, $refresh = false)
     {
         $payload = $this->provider->decode($token->get());
-        $this->payload->customer($payload)->check();
+        $this->payload->customer($payload)->check($refresh);
 
         //blacklist verify
         if ($this->validate($payload)) {
@@ -45,7 +45,7 @@ class Manager
     public function refresh(Token $token)
     {
 
-        $payload = $this->decode($token);
+        $payload = $this->decode($token, true);
 
         $this->invalidate($token);
 
@@ -57,7 +57,7 @@ class Manager
 
     public function invalidate(Token $token)
     {
-        return $this->blacklist->add($this->decode($token));
+        return $this->blacklist->add($this->decode($token, true));
     }
 
     public function validate($payload)

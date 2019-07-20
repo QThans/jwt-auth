@@ -1,9 +1,11 @@
 {
     "name": "thans/tp-jwt-auth",
-    "description": "layui-admi's user extension",
+    "description": "thinkphp  jwt auth composer",
     "type": "library",
     "require": {
-        "lcobucci/jwt": "^3.3"
+        "php": "^7.0",
+        "lcobucci/jwt": "^3.3",
+        "topthink/framework": "^5.1.10"
     },
     "license": "Apache-2.0",
     "authors": [

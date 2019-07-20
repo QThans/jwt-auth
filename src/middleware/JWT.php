@@ -10,6 +10,7 @@ class JWT
     public function handle($request, \Closure $next)
     {
         //初始化
+        dump(1);
         (new JWTProvider($request))->init();
         return $next($request);
     }

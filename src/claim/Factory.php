@@ -51,7 +51,6 @@ class Factory
 
     public function validate($refresh = false)
     {
-        //验证
         foreach ($this->claim as $key => $claim) {
             if ( ! $refresh && method_exists($claim, 'validatePayload')) {
                 $claim->validatePayload();
