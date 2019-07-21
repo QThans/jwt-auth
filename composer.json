@@ -17,7 +17,10 @@
     "autoload": {
         "psr-4": {
             "thans\\jwt\\": "src"
-        }
+        },
+        "files": [
+            "src/helper.php"
+        ]
     },
     "minimum-stability": "dev"
 }
