@@ -2,6 +2,7 @@
 
 namespace thans\jwt;
 
+use thans\jwt\exception\BadMethodCallException;
 use thans\jwt\parser\Parser;
 use thans\jwt\exception\JWTException;
 

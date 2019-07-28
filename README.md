@@ -25,16 +25,6 @@ $ php think jwt:create
 此举将生成jwt.php和.env配置文件。不推荐直接修改jwt.php
 同时，env中会随机生成secret。请不要随意更新secret，也请保障secret安全。
 
-第三步:
-
-将JWT中间件添加至全局中间件（非验证使用）
-
-```php
-return [
-    thans\jwt\middleware\JWT::class,
-];
-```
-
 
 ## 使用方式
 

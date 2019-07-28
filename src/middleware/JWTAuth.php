@@ -9,6 +9,6 @@ class JWTAuth extends BaseMiddleware
     {
         $this->auth->auth();
 
-//        return $next($request);
+        return $next($request);
     }
 }
