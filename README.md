@@ -9,6 +9,35 @@
 1. php >= 7.0
 2. thinkphp >=5.1.*
 
+## 说明
+> 目前支持如下三大类型加密方式：RSA,HASH,DSA。再各分256、384、512位。
+默认是HS256，即hash 256位加密。
+
+>需要修改加密方式，请修改参数：ALGO，参数选项：
+* HS256    
+    > 备注：hash 256位
+* HS384
+    > 备注：hash 384位
+* HS512
+    > 备注：hash 512位
+* RS256
+    > 备注：rsa 256位
+* RS384
+    > 备注：rsa 384位
+* RS512
+    > 备注：rsa 512位
+* ES256
+    > 备注：dsa 256位
+* ES384
+    > 备注：dsa 384位
+* ES512
+    > 备注：dsa 512位
+
+> 重要：RSA和DSA 都是非对称加密方式，除了修改参数ALGO外，需要配置：PUBLIC_KEY、PRIVATE_KEY两个参数，
+> 这两个参数支持文本（不要开头、结尾和换行）或密钥文件路径。如果密钥设置了密码，请配置好参数：PASSWORD
+
+> env文件不支持内容有等于号，遇到这种情况：
+>1、使用路径 2、生成没有等于号的密钥。
 ## 安装
 
 第一步:
@@ -71,6 +100,12 @@ https://github.com/tymondesigns/jwt-auth
 - lcobucci/jwt
 - thinkphp
 
+## 下一步
+
+- 支持动态配置
+- 支持tp6
+
+
 ## License
 
-Apache2.0
+MIT

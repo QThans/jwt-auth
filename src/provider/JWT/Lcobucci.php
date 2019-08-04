@@ -94,7 +94,7 @@ class Lcobucci extends Provider
         return $this->isAsymmetric()
             ?
             (new Keychain())->getPrivateKey($this->getPrivateKey(),
-                $this->getPassphrase())
+                $this->getPassword())
             :
             $this->getSecret();
     }

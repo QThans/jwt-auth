@@ -7,7 +7,7 @@
         "lcobucci/jwt": "^3.3",
         "topthink/framework": "^5.1.10"
     },
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "Thans",

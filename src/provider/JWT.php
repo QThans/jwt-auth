@@ -36,11 +36,19 @@ class JWT
 
     protected function registerProvider()
     {
+        //builder asymmetric keys
+        $keys = $this->config['secret']
+            ? $this->config['secret']
+            : [
+                'public'   => $this->config['public_key'],
+                'private'  => $this->config['private_key'],
+                'password' => $this->config['password'],
+            ];
         Container::get('thans\jwt\provider\JWT\Lcobucci', [
             new Builder(),
             new Parser(),
             $this->config['algo'],
-            $this->config['secret'],
+            $keys,
         ]);
     }
 
