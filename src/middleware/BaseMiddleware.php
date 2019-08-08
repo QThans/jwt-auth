@@ -4,6 +4,7 @@
 namespace thans\jwt\middleware;
 
 use thans\jwt\JWTAuth as Auth;
+use think\facade\Cookie;
 
 class BaseMiddleware
 {
@@ -14,9 +15,10 @@ class BaseMiddleware
         $this->auth = $auth;
     }
 
-    protected function setAuthenticationHeader($response, $token = null)
+    protected function setAuthentication($response, $token = null)
     {
         $token = $token ?: $this->auth->refresh();
+        Cookie::set('token', $token);
 
         return $response->header('Authorization', 'Bearer '.$token);
     }

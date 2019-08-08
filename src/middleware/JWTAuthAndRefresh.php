@@ -14,7 +14,7 @@ class JWTAuthAndRefresh extends BaseMiddleware
         } catch (TokenExpiredException $e) {
             $response = $next($request);
 
-            return $this->setAuthenticationHeader($response);
+            return $this->setAuthentication($response);
         }
 
         return $next($request);
