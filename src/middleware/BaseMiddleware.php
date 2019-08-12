@@ -19,6 +19,7 @@ class BaseMiddleware
     {
         $token = $token ?: $this->auth->refresh();
         Cookie::set('token', $token);
+        $this->auth->setToken($token);
 
         return $response->header('Authorization', 'Bearer '.$token);
     }

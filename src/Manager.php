@@ -11,6 +11,8 @@ class Manager
 
     protected $payload;
 
+    protected $refresh;
+
     public function __construct(
         Blacklist $blacklist,
         Payload $payload,
@@ -29,10 +31,10 @@ class Manager
         return new Token($token);
     }
 
-    public function decode(Token $token, $refresh = false)
+    public function decode(Token $token)
     {
         $payload = $this->provider->decode($token->get());
-        $this->payload->customer($payload)->check($refresh);
+        $this->payload->customer($payload)->check($this->refresh);
 
         //blacklist verify
         if ($this->validate($payload)) {
@@ -44,7 +46,8 @@ class Manager
 
     public function refresh(Token $token)
     {
-        $payload = $this->decode($token, true);
+        $this->setRefresh();
+        $payload = $this->decode($token);
 
         $this->invalidate($token);
 
@@ -62,5 +65,12 @@ class Manager
     public function validate($payload)
     {
         return $this->blacklist->has($payload);
+    }
+
+    public function setRefresh($refresh = true)
+    {
+        $this->refresh = true;
+
+        return $this;
     }
 }
