@@ -1,7 +1,6 @@
 
 <h1><p align="center">JWT-AUTH</p></h1>
-<h1><p align="center">Thinkphp5.1 扩展包</p></h1>
-<p align="center"> 基于jwt的token包。</p>
+<p align="center"> thinkphp的jwt（JSON Web Token）身份验证包。支持Header、Cookie、Param等多种传参方式。包含：验证、验证并且自动刷新等多种中间件。</p>
 
 
 ## 环境要求
