@@ -2,11 +2,12 @@
 <h1><p align="center">JWT-AUTH</p></h1>
 <p align="center"> thinkphp的jwt（JSON Web Token）身份验证包。支持Header、Cookie、Param等多种传参方式。包含：验证、验证并且自动刷新等多种中间件。</p>
 
+## 新支持thinkphp6.0
 
 ## 环境要求
 
 1. php >= 7.0
-2. thinkphp >=5.1.*
+2. thinkphp ^5.1.10 || ^6.0.0
 
 ## 说明
 > 目前支持如下三大类型加密方式：RSA,HASH,DSA。再各分256、384、512位。
@@ -102,8 +103,6 @@ https://github.com/tymondesigns/jwt-auth
 ## 下一步
 
 - 支持动态配置
-- 支持tp6
-
 
 ## License
 
