@@ -22,5 +22,15 @@
             "src/helper.php"
         ]
     },
+    "extra": {
+        "think": {
+            "services": [
+                "thans\\jwt\\Service"
+            ],
+            "config": {
+                "jwt": "config/config.php"
+            }
+        }
+    },
     "minimum-stability": "dev"
 }
