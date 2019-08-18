@@ -3,7 +3,6 @@
 
 namespace thans\jwt;
 
-
 use thans\jwt\command\SecretCommand;
 use thans\jwt\provider\JWT as JWTProvider;
 
