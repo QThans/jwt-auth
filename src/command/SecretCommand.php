@@ -18,7 +18,7 @@ class SecretCommand extends \think\console\Command
     public function execute(Input $input, Output $output)
     {
         $key  = md5(uniqid().time().rand(0, 60));
-        $path = env('app_path').'..'.DIRECTORY_SEPARATOR.'.env';
+        $path = app()->getAppPath().'..'.DIRECTORY_SEPARATOR.'.env';
         if (file_exists($path)
             && strpos(file_get_contents($path), 'JWT_SECRET')
         ) {
@@ -34,8 +34,9 @@ class SecretCommand extends \think\console\Command
 
     public function createConfig($output)
     {
-        $configFilePath = env('app_path').'..'.DIRECTORY_SEPARATOR.'config'
+        $configFilePath = app()->getAppPath().'..'.DIRECTORY_SEPARATOR.'config'
             .DIRECTORY_SEPARATOR.'jwt.php';
+
         if (is_file($configFilePath)) {
             $output->writeln('Config file is exist');
 
@@ -44,8 +45,8 @@ class SecretCommand extends \think\console\Command
         $res = copy(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
             .DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR
             .'config.php', $configFilePath);
-        if (strpos(App::version(), '6.0') !== false) {
-            $config = file_exists($configFilePath);
+        if (strpos(\think\App::VERSION, '6.0') !== false) {
+            $config = file_get_contents($configFilePath);
             $config = str_replace('Tp5', 'Tp6', $config);
             file_put_contents($configFilePath, $config);
         }
