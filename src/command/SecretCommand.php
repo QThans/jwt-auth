@@ -5,6 +5,7 @@ namespace thans\jwt\command;
 
 use think\console\Input;
 use think\console\Output;
+use think\facade\App;
 
 class SecretCommand extends \think\console\Command
 {
@@ -43,6 +44,11 @@ class SecretCommand extends \think\console\Command
         $res = copy(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
             .DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR
             .'config.php', $configFilePath);
+        if (strpos(App::version(), '6.0') !== false) {
+            $config = file_exists($configFilePath);
+            $config = str_replace('Tp5', 'Tp6', $config);
+            file_put_contents($configFilePath, $config);
+        }
         if ($res) {
             $output->writeln('Create config file success:'.$configFilePath);
         } else {
