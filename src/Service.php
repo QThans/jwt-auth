@@ -11,6 +11,6 @@ class Service extends \think\Service
     public function boot()
     {
         $this->commands(SecretCommand::class);
-        (new JWTProvider(new \think\Request()))->init();
+        (new JWTProvider($this->app->request))->init();
     }
 }
