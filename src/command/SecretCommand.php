@@ -20,7 +20,7 @@ class SecretCommand extends \think\console\Command
         $key  = md5(uniqid().time().rand(0, 60));
         $path = app()->getAppPath().'..'.DIRECTORY_SEPARATOR.'.env';
         if (file_exists($path)
-            && strpos(file_get_contents($path), 'JWT_SECRET')
+            && strpos(file_get_contents($path), '[JWT]')
         ) {
             $output->writeln('JWT_SECRET is exists');
         } else {
