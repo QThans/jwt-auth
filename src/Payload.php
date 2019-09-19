@@ -34,7 +34,7 @@ class Payload
         $this->factory = $factory;
     }
 
-    public function customer(array $claim)
+    public function customer(array $claim = [])
     {
         foreach ($claim as $key => $value) {
             $this->factory->customer($key,

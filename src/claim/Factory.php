@@ -19,7 +19,7 @@ class Factory
         ];
 
     protected $ttl;
-    protected $claim;
+    protected $claim = [];
     protected $refreshTtl;
 
     public function __construct(Request $request, $ttl, $refreshTtl)

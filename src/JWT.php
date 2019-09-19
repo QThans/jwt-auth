@@ -67,6 +67,12 @@ class JWT
         }
     }
 
+    /**
+     * 获取Payload
+     * @return mixed
+     * @throws JWTException
+     * @throws exception\TokenBlacklistException
+     */
     public function getPayload()
     {
         $this->requireToken();
@@ -74,6 +80,11 @@ class JWT
         return $this->manager->decode($this->token);
     }
 
+    /**
+     * 刷新Token
+     * @return mixed
+     * @throws JWTException
+     */
     public function refresh()
     {
         $this->parseToken();

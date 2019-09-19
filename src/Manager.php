@@ -23,7 +23,14 @@ class Manager
         $this->provider  = $provider;
     }
 
-    public function encode($customerClaim)
+    /**
+     * Token编码
+     *
+     * @param $customerClaim
+     *
+     * @return Token
+     */
+    public function encode($customerClaim = [])
     {
         $payload = $this->payload->customer($customerClaim);
         $token   = $this->provider->encode($payload->get());
@@ -31,6 +38,14 @@ class Manager
         return new Token($token);
     }
 
+    /**
+     * 解析Token
+     *
+     * @param  Token  $token
+     *
+     * @return mixed
+     * @throws TokenBlacklistException
+     */
     public function decode(Token $token)
     {
         $payload = $this->provider->decode($token->get());
@@ -44,6 +59,14 @@ class Manager
         return $payload;
     }
 
+    /**
+     * 刷新Token
+     *
+     * @param  Token  $token
+     *
+     * @return Token
+     * @throws TokenBlacklistException
+     */
     public function refresh(Token $token)
     {
         $this->setRefresh();
@@ -57,11 +80,26 @@ class Manager
         return $this->encode($payload);
     }
 
+    /**
+     * 注销Token，使之无效
+     *
+     * @param  Token  $token
+     *
+     * @return Blacklist
+     * @throws TokenBlacklistException
+     */
     public function invalidate(Token $token)
     {
-        return $this->blacklist->add($this->decode($token, true));
+        return $this->blacklist->add($this->provider->decode($token->get()));
     }
 
+    /**
+     * 验证是否在黑名单
+     *
+     * @param $payload
+     *
+     * @return bool
+     */
     public function validate($payload)
     {
         return $this->blacklist->has($payload);
