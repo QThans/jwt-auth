@@ -89,6 +89,10 @@ token传参方式如下：
 - 将token加入header，如下：Authorization:bearer token值
 - 以上三种方式，任选其一即可。推荐加入header中。
 
+#### 其他操作
+1. 拉黑Token JWTAuth::invalidate($token);
+2. 查询Token是否黑名单 JWTAuth::validate($token);
+
 ## 参考与借鉴
 
 https://github.com/tymondesigns/jwt-auth
