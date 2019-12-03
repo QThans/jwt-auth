@@ -4,7 +4,6 @@
 namespace thans\jwt\middleware;
 
 use thans\jwt\JWTAuth as Auth;
-use think\App;
 use think\facade\Cookie;
 
 class BaseMiddleware

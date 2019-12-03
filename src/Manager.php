@@ -49,12 +49,12 @@ class Manager
     public function decode(Token $token)
     {
         $payload = $this->provider->decode($token->get());
-        $this->payload->customer($payload)->check($this->refresh);
 
         //blacklist verify
         if ($this->validate($payload)) {
             throw new TokenBlacklistException('The token is in blacklist.');
         }
+        $this->payload->customer($payload)->check($this->refresh);
 
         return $payload;
     }

@@ -9,5 +9,5 @@ if (strpos(App::VERSION, '6.0') === false) {
     Console::addDefaultCommands([
         SecretCommand::class
     ]);
-    (new JWTProvider(new \think\Request()))->init();
+    (new JWTProvider(app('request')))->init();
 }
