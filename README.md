@@ -95,6 +95,12 @@ token传参方式如下：
 1. 拉黑Token JWTAuth::invalidate($token);
 2. 查询Token是否黑名单 JWTAuth::validate($token);
 
+#### 常见问题
+- 使用RSA256方式的时候，请使用文本形式。如下：
+
+![image](https://thans.cn/Snipaste_2020-01-18_17-25-52.png)
+
+
 ## 参考与借鉴
 
 https://github.com/tymondesigns/jwt-auth
