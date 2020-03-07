@@ -100,6 +100,11 @@ token传参方式如下：
 
 ![image](https://thans.cn/Snipaste_2020-01-18_17-25-52.png)
 
+## 联系&打赏
+
+[打赏名单](SUPPORT.md)
+
+![image](https://thans.cn/others/thans.jpeg)
 
 ## 参考与借鉴
 
