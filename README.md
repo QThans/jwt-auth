@@ -4,7 +4,7 @@
 
 [thinkphp6.0的demo下载](https://gitee.com/thans/jwt-auth/attach_files/306748/download)
 
-## 新支持thinkphp6.0
+## 支持Swoole
 
 ## 环境要求
 
