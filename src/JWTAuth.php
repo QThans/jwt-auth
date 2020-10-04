@@ -31,6 +31,16 @@ class JWTAuth extends JWT
     }
 
     /**
+     * 获取Token
+     *
+     * @return mixed
+     */
+    public function token()
+    {
+        return $this->getToken();
+    }
+
+    /**
      * 添加Token至黑名单
      *
      * @param $token

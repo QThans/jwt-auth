@@ -74,7 +74,12 @@ $token = JWTAuth::builder(['uid' => 1]);//参数为用户认证的信息，请�
 JWTAuth::auth();//token验证
 
 JWTAuth::refresh();//刷新token，会将旧token加入黑名单
-        
+
+$tokenStr = JWTAuth::token()->get(); //可以获取请求中的完整token字符串
+
+$payload = JWTAuth::auth(); //可验证token, 并获取token中的payload部分
+$uid = $payload['uid']->getValue(); //可以继而获取payload里自定义的字段，比如uid
+
 ```
 token刷新说明：
 
