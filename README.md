@@ -91,6 +91,12 @@ token刷新说明：
 
 
 token传参方式如下：
+
+> 可通过jwt.php配置文件内token_mode参数来调整参数接收方式及优先级
+> token_mode默认值为['header', 'cookie', 'param'];
+
+> 在某些前后端分离的情况下可选择取消cookie接收方式来避免token冲突
+
 - 将token加入到url中作为参数。键名为token
 - 将token加入到cookie。键名为token
 - 将token加入header，如下：Authorization:bearer token值

@@ -84,11 +84,22 @@ class JWT
 
     protected function registerJWTAuth()
     {
-        JWTAuth::parser()->setRequest($this->request)->setChain([
-            new AuthHeader(),
-            new Cookie(),
-            new Param(),
-        ]);
+        $chains = [
+            'header' => new AuthHeader(),
+            'cookie' => new Cookie(),
+            'param'  => new Param()
+        ];
+
+        $mode = $this->config['token_mode'];
+        $setChain = [];
+
+        foreach ($mode as $key => $chain) {
+            if(isset($chains[$chain])){
+                $setChain[$key] = $chains[$chain];
+            }
+        }
+
+        JWTAuth::parser()->setRequest($this->request)->setChain($setChain);
     }
 
     public function init()
