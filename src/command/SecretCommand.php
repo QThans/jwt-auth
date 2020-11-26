@@ -24,9 +24,11 @@ class SecretCommand extends \think\console\Command
         ) {
             $output->writeln('JWT_SECRET is exists');
         } else {
-            file_put_contents($path,
+            file_put_contents(
+                $path,
                 PHP_EOL."[JWT]".PHP_EOL."SECRET=$key".PHP_EOL,
-                FILE_APPEND);
+                FILE_APPEND
+            );
             $output->writeln('JWT_SECRET has created');
         }
         $this->createConfig($output);

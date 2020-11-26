@@ -37,8 +37,10 @@ class Payload
     public function customer(array $claim = [])
     {
         foreach ($claim as $key => $value) {
-            $this->factory->customer($key,
-                is_object($value) ? $value->getValue() : $value);
+            $this->factory->customer(
+                $key,
+                is_object($value) ? $value->getValue() : $value
+            );
         }
 
         return $this;
