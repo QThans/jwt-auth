@@ -58,8 +58,11 @@ class Lcobucci extends Provider
             }
             $this->builder->sign($this->signer, $this->getSigningKey());
         } catch (Exception $e) {
-            throw new JWTException('Could not create token :'.$e->getMessage(),
-                $e->getCode(), $e);
+            throw new JWTException(
+                'Could not create token :'.$e->getMessage(),
+                $e->getCode(),
+                $e
+            );
         }
 
         return (string)$this->builder->getToken();
@@ -93,8 +96,10 @@ class Lcobucci extends Provider
     {
         return $this->isAsymmetric()
             ?
-            (new Keychain())->getPrivateKey($this->getPrivateKey(),
-                $this->getPassword())
+            (new Keychain())->getPrivateKey(
+                $this->getPrivateKey(),
+                $this->getPassword()
+            )
             :
             $this->getSecret();
     }

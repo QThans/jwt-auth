@@ -94,7 +94,7 @@ class JWT
         $setChain = [];
 
         foreach ($mode as $key => $chain) {
-            if(isset($chains[$chain])){
+            if (isset($chains[$chain])) {
                 $setChain[$key] = $chains[$chain];
             }
         }
