@@ -9,6 +9,11 @@ class JWTAuthAndRefresh extends BaseMiddleware
 {
     public function handle($request, \Closure $next)
     {
+        // OPTIONS请求直接返回
+        if ($request->isOptions()) {
+            return $next($request);
+        }
+
         try {
             $this->auth->auth();
         } catch (TokenExpiredException $e) {
