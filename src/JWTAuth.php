@@ -72,4 +72,15 @@ class JWTAuth extends JWT
 
         return $this->manager->validate($this->manager->provider->decode($token));
     }
+
+    public function validateGracePeriod()
+    {
+        $token = $this->getToken();
+
+        if ($token instanceof Token) {
+            return $this->manager->validateGracePeriod($this->manager->provider->decode($token->get()));
+        }
+
+        return $this->manager->validateGracePeriod($this->manager->provider->decode($token));
+    }
 }

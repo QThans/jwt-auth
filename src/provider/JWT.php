@@ -35,7 +35,7 @@ class JWT
     {
         Container::getInstance()->make('thans\jwt\Blacklist', [
             new $this->config['blacklist_storage'],
-        ]);
+        ])->setRefreshTTL($this->config['refresh_ttl'])->setGracePeriod($this->config['blacklist_grace_period']);
     }
 
 

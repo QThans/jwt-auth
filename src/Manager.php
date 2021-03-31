@@ -105,6 +105,12 @@ class Manager
         return $this->blacklist->has($payload);
     }
 
+    public function validateGracePeriod($payload)
+    {
+        $this->setRefresh();
+        return $this->blacklist->hasGracePeriod($payload);
+    }
+
     public function setRefresh($refresh = true)
     {
         $this->refresh = true;

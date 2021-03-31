@@ -19,8 +19,8 @@ class Tp5 implements Storage
         return Cache::get($key);
     }
 
-    public function set($key, $time = 0)
+    public function set($key, $val, $time = 0)
     {
-        return Cache::set($key, time(), $time);
+        return Cache::set($key, $val, $time);
     }
 }
