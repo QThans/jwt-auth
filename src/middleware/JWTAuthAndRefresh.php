@@ -17,13 +17,10 @@ class JWTAuthAndRefresh extends BaseMiddleware
 
         // 验证token
         try {
-
             $this->auth->auth();
-
         } catch (TokenExpiredException $e) { // 捕获token过期
             // 尝试刷新token
             try {
-
                 $this->auth->setRefresh();
                 $token = $this->auth->refresh();
 
@@ -32,9 +29,7 @@ class JWTAuthAndRefresh extends BaseMiddleware
 
                 $response = $next($request);
                 return $this->setAuthentication($response, $token);
-
             } catch (TokenBlacklistGracePeriodException $e) { // 捕获黑名单宽限期
-
                 // $payload = $this->auth->auth(false);
                 // $request->uid = $payload['uid']->getValue();
 
