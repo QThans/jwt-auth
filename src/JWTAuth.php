@@ -9,12 +9,15 @@ class JWTAuth extends JWT
     /**
      * Token验证，返回payload
      *
+     * @param  boolean $validate 是否验证黑名单
      * @return array
      * @throws exception\JWTException
      * @throws exception\TokenBlacklistException
+     * @throws exception\TokenBlacklistGracePeriodException
      */
-    public function auth()
+    public function auth($validate = true)
     {
+        $this->manager->setValidate($validate);
         return (array)$this->getPayload();
     }
 
@@ -72,15 +75,5 @@ class JWTAuth extends JWT
 
         return $this->manager->validate($this->manager->provider->decode($token));
     }
-
-    public function validateGracePeriod()
-    {
-        $token = $this->getToken();
-
-        if ($token instanceof Token) {
-            return $this->manager->validateGracePeriod($this->manager->provider->decode($token->get()));
-        }
-
-        return $this->manager->validateGracePeriod($this->manager->provider->decode($token));
-    }
+    
 }

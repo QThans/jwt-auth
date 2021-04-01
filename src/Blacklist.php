@@ -24,8 +24,7 @@ class Blacklist
 
     public function has($payload)
     {
-        $val = (int) $this->get($this->getKey($payload));
-        return  $val && $val <= time();
+        return $this->get($this->getKey($payload)) ? true : false;
     }
 
     public function hasGracePeriod($payload)
