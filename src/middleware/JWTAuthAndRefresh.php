@@ -10,8 +10,8 @@ class JWTAuthAndRefresh extends BaseMiddleware
 {
     public function handle($request, \Closure $next)
     {
-        // 跨域检测直接返回
-        if($request->isOptions()){
+        // OPTIONS请求直接返回
+        if ($request->isOptions()) {
             return response();
         }
 
@@ -20,8 +20,7 @@ class JWTAuthAndRefresh extends BaseMiddleware
 
             $this->auth->auth();
 
-        // 捕获token过期
-        } catch (TokenExpiredException $e) {
+        } catch (TokenExpiredException $e) { // 捕获token过期
             // 尝试刷新token
             try {
 
@@ -42,8 +41,7 @@ class JWTAuthAndRefresh extends BaseMiddleware
                 return $next($request);
             }
 
-        // 捕获黑名单宽限期
-        } catch (TokenBlacklistGracePeriodException $e) {
+        } catch (TokenBlacklistGracePeriodException $e) { // 捕获黑名单宽限期
             // $payload = $this->auth->auth(false);
             // $request->uid = $payload['uid']->getValue();
         }

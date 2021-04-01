@@ -75,5 +75,4 @@ class JWTAuth extends JWT
 
         return $this->manager->validate($this->manager->provider->decode($token));
     }
-    
 }

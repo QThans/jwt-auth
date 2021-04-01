@@ -54,7 +54,7 @@ class Manager
         $payload = $this->provider->decode($token->get());
 
 
-        if($this->validate){
+        if ($this->validate) {
             //blacklist grace period verify
             if ($this->validateGracePeriod($payload)) {
                 throw new TokenBlacklistGracePeriodException('The token is in blacklist grace period list.');
