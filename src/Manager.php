@@ -3,6 +3,7 @@
 namespace thans\jwt;
 
 use thans\jwt\exception\TokenBlacklistException;
+use thans\jwt\exception\TokenBlacklistGracePeriodException;
 use thans\jwt\provider\JWT\Provider;
 
 class Manager
@@ -12,6 +13,8 @@ class Manager
     protected $payload;
 
     protected $refresh;
+
+    protected $validate = true;
 
     public function __construct(
         Blacklist $blacklist,
@@ -50,10 +53,19 @@ class Manager
     {
         $payload = $this->provider->decode($token->get());
 
-        //blacklist verify
-        if ($this->validate($payload)) {
-            throw new TokenBlacklistException('The token is in blacklist.');
+
+        if ($this->validate) {
+            //blacklist grace period verify
+            if ($this->validateGracePeriod($payload)) {
+                throw new TokenBlacklistGracePeriodException('The token is in blacklist grace period list.');
+            }
+
+            //blacklist verify
+            if ($this->validate($payload)) {
+                throw new TokenBlacklistException('The token is in blacklist.');
+            }
         }
+
         $this->payload->customer($payload)->check($this->refresh);
 
         return $payload;
@@ -105,9 +117,22 @@ class Manager
         return $this->blacklist->has($payload);
     }
 
+    public function validateGracePeriod($payload)
+    {
+        return $this->blacklist->hasGracePeriod($payload);
+    }
+
     public function setRefresh($refresh = true)
     {
         $this->refresh = true;
+
+        return $this;
+    }
+
+    public function setValidate($validate = true)
+    {
+        $this->validate = $validate;
+        $this->refresh = !$validate ? true : $this->refresh;
 
         return $this;
     }
