@@ -39,9 +39,9 @@ class Blacklist
         return $payload['jti']->getValue();
     }
 
-    public function set($key, $time = 0)
+    public function set($key, $val, $time = 0)
     {
-        $this->storage->set($key, $time);
+        $this->storage->set($key, $val, $time);
 
         return $this;
     }
@@ -83,7 +83,7 @@ class Blacklist
     protected function getSecondsUntilExpired($payload)
     {
         $iat = $payload['iat']->getValue();
-        return $iat + $this->getRefreshTTL() - time();
+        return $iat + $this->getRefreshTTL() * 60 - time();
     }
 
     protected function getGraceTimestamp()
