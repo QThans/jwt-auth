@@ -47,7 +47,7 @@ class SecretCommand extends \think\console\Command
         $res = copy(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
             .DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR
             .'config.php', $configFilePath);
-        if (strpos(\think\App::VERSION, '6.0') !== false) {
+        if (strpos(\think\App::VERSION, '6.') === 0) {
             $config = file_get_contents($configFilePath);
             $config = str_replace('Tp5', 'Tp6', $config);
             file_put_contents($configFilePath, $config);
