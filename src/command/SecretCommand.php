@@ -39,23 +39,23 @@ class SecretCommand extends \think\console\Command
         $configFilePath = app()->getAppPath().'..'.DIRECTORY_SEPARATOR.'config'
             .DIRECTORY_SEPARATOR.'jwt.php';
 
-        if (is_file($configFilePath)) {
-            $output->writeln('Config file is exist');
+        if (!is_file($configFilePath)) {
+            $res = copy(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
+                .DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR
+                .'config.php', $configFilePath);
 
-            return;
+            if ($res) {
+                $output->writeln('Create config file success:'.$configFilePath);
+            } else {
+                $output->writeln('Create config file error');
+                return;
+            }
         }
-        $res = copy(__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
-            .DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR
-            .'config.php', $configFilePath);
+
         if (strpos(\think\App::VERSION, '6.') === 0) {
             $config = file_get_contents($configFilePath);
             $config = str_replace('Tp5', 'Tp6', $config);
             file_put_contents($configFilePath, $config);
-        }
-        if ($res) {
-            $output->writeln('Create config file success:'.$configFilePath);
-        } else {
-            $output->writeln('Create config file error');
         }
     }
 }
