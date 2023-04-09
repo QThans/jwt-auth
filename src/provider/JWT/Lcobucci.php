@@ -24,6 +24,8 @@ use thans\jwt\exception\TokenInvalidException;
 
 class Lcobucci extends Provider
 {
+    protected $signer;
+
     protected $signers
         = [
             'HS256' => HS256::class,

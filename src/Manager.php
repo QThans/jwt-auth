@@ -8,6 +8,8 @@ use thans\jwt\provider\JWT\Provider;
 
 class Manager
 {
+    protected $provider;
+
     protected $blacklist;
 
     protected $payload;

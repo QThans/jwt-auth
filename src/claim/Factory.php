@@ -7,6 +7,8 @@ use think\Request;
 
 class Factory
 {
+    protected $request;
+
     protected $classMap
         = [
             'aud' => Audience::class,
