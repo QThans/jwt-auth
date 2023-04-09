@@ -4,14 +4,14 @@
     "type": "library",
     "require": {
         "php": "~8.1.0 || ~8.2.0",
-        "lcobucci/jwt": "5.0.*",
+        "lcobucci/jwt": "^4.3",
         "topthink/framework": "^5.1.10 || ^6.0.0"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Thans",
-            "email": "360641274@qq.com"
+            "email": "ntbperst@outlook.com"
         }
     ],
     "autoload": {
@@ -31,6 +31,5 @@
                 "jwt": "config/config.php"
             }
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

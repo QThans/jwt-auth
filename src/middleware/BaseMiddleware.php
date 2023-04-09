@@ -24,7 +24,7 @@ class BaseMiddleware
         if (in_array('cookie', Config::get('jwt.token_mode'))) {
             Cookie::set('token', $token);
         }
-        
+
         if (in_array('header', Config::get('jwt.token_mode'))) {
             $response = $response->header(['Authorization' => 'Bearer '.$token]);
         }

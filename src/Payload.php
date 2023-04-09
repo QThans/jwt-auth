@@ -39,7 +39,7 @@ class Payload
         foreach ($claim as $key => $value) {
             $this->factory->customer(
                 $key,
-                is_object($value) ? $value->getValue() : $value
+                is_object($claim) && method_exists($claim, 'getValue') ? $value->getValue() : $value
             );
         }
 

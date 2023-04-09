@@ -25,19 +25,19 @@ class JWTAuthAndRefresh extends BaseMiddleware
                 $token = $this->auth->refresh();
 
                 // $payload = $this->auth->auth(false);
-                // $request->uid = $payload['uid']->getValue();
+                // $request->uid = $payload['uid'];
 
                 $response = $next($request);
                 return $this->setAuthentication($response, $token);
             } catch (TokenBlacklistGracePeriodException $e) { // 捕获黑名单宽限期
                 // $payload = $this->auth->auth(false);
-                // $request->uid = $payload['uid']->getValue();
+                // $request->uid = $payload['uid'];
 
                 return $next($request);
             }
         } catch (TokenBlacklistGracePeriodException $e) { // 捕获黑名单宽限期
             // $payload = $this->auth->auth(false);
-            // $request->uid = $payload['uid']->getValue();
+            // $request->uid = $payload['uid'];
         }
 
         return $next($request);

@@ -54,8 +54,6 @@ class Manager
     public function decode(Token $token)
     {
         $payload = $this->provider->decode($token->get());
-
-
         if ($this->validate) {
             //blacklist grace period verify
             if ($this->validateGracePeriod($payload)) {
@@ -84,6 +82,7 @@ class Manager
     public function refresh(Token $token)
     {
         $this->setRefresh();
+
         $payload = $this->decode($token);
 
         $this->invalidate($token);

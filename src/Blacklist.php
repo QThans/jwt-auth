@@ -36,7 +36,7 @@ class Blacklist
 
     protected function getKey($payload)
     {
-        return $payload['jti']->getValue();
+        return $payload['jti'];
     }
 
     public function set($key, $val, $time = 0)
@@ -82,7 +82,7 @@ class Blacklist
 
     protected function getSecondsUntilExpired($payload)
     {
-        $iat = $payload['iat']->getValue();
+        $iat = $payload['iat'];
         return $iat + $this->getRefreshTTL() * 60 - time();
     }
 

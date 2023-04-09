@@ -11,8 +11,8 @@ use think\App;
 use think\Container;
 use think\facade\Config;
 use think\Request;
-use Lcobucci\JWT\Builder;
-use Lcobucci\JWT\Parser;
+// use Lcobucci\JWT\Builder;
+// use Lcobucci\JWT\Parser;
 
 class JWT
 {
@@ -50,8 +50,6 @@ class JWT
                 'password' => $this->config['password'],
             ];
         Container::getInstance()->make('thans\jwt\provider\JWT\Lcobucci', [
-            new Builder(),
-            new Parser(),
             $this->config['algo'],
             $keys,
         ]);
