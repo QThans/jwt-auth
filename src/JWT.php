@@ -20,7 +20,7 @@ class JWT
     public function __construct(Manager $manager, Parser $parser)
     {
         $this->manager = $manager;
-        $this->parser  = $parser;
+        $this->parser = $parser;
     }
 
     public function createToken($customerClaim = [])
@@ -30,7 +30,7 @@ class JWT
 
     public function parseToken()
     {
-        if (! $token = $this->parser->parseToken()) {
+        if (!$token = $this->parser->parseToken()) {
             throw new JWTException('No token is this request.');
         }
         $this->setToken($token);
@@ -62,7 +62,7 @@ class JWT
     {
         $this->getToken();
 
-        if (! $this->token) {
+        if (!$this->token) {
             throw new JWTException('Must have token');
         }
     }

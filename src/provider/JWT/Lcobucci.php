@@ -4,8 +4,6 @@
 namespace thans\jwt\provider\JWT;
 
 use Exception;
-// use Lcobucci\JWT\Builder;
-// use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Configuration;
 use Lcobucci\JWT\Signer\Ecdsa;
 use Lcobucci\JWT\Signer\Key\InMemory;
@@ -22,7 +20,6 @@ use Lcobucci\JWT\Signer\Rsa\Sha384 as RS384;
 use Lcobucci\JWT\Signer\Rsa\Sha512 as RS512;
 use Lcobucci\JWT\Token\RegisteredClaims;
 use Lcobucci\JWT\Validation\Constraint\SignedWith;
-// use ReflectionClass;
 use DateTimeImmutable;
 use DateTimeInterface;
 use thans\jwt\exception\JWTException;
@@ -46,7 +43,6 @@ class Lcobucci extends Provider
             'ES384' => ES384::class,
             'ES512' => ES512::class,
         ];
-    // protected $builder;
 
     protected $configuration;
 
@@ -96,7 +92,6 @@ class Lcobucci extends Provider
                     ? $claim->getValue()
                     : $claim;
             }
-
         }
         return $claims;
     }
