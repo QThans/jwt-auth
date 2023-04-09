@@ -32,17 +32,17 @@ class Lcobucci extends Provider
     protected $keys;
 
     protected $signers
-        = [
-            'HS256' => HS256::class,
-            'HS384' => HS384::class,
-            'HS512' => HS512::class,
-            'RS256' => RS256::class,
-            'RS384' => RS384::class,
-            'RS512' => RS512::class,
-            'ES256' => ES256::class,
-            'ES384' => ES384::class,
-            'ES512' => ES512::class,
-        ];
+    = [
+        'HS256' => HS256::class,
+        'HS384' => HS384::class,
+        'HS512' => HS512::class,
+        'RS256' => RS256::class,
+        'RS384' => RS384::class,
+        'RS512' => RS512::class,
+        'ES256' => ES256::class,
+        'ES384' => ES384::class,
+        'ES512' => ES512::class,
+    ];
 
     protected $configuration;
 
