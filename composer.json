@@ -1,10 +1,10 @@
 {
     "name": "thans/tp-jwt-auth",
-    "description": "thinkphp  jwt auth composer",
+    "description": "thinkphp jwt auth composer",
     "type": "library",
     "require": {
-        "php": "^7.0 || ^8.0",
-        "qeq66/jwt": "3.3.*",
+        "php": "~8.1.0 || ~8.2.0",
+        "lcobucci/jwt": "5.0.*",
         "topthink/framework": "^5.1.10 || ^6.0.0"
     },
     "license": "MIT",
