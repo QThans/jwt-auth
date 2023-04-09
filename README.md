@@ -112,13 +112,11 @@ token传参方式如下：
 #### 常见问题
 - 使用RSA256方式的时候，请使用文本形式。如下：
 
-![image](https://thans.cn/Snipaste_2020-01-18_17-25-52.png)
-
 ## 联系&打赏
 
 [打赏名单](SUPPORT.md)
 
-![image](https://thans.cn/others/thans.jpeg)
+![image](https://img.thans.cn/wechat.jpg)
 
 ## 参考与借鉴
 

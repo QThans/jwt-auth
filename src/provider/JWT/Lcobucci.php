@@ -161,24 +161,12 @@ class Lcobucci extends Provider
 
     protected function isAsymmetric()
     {
-        // $reflect = new ReflectionClass($this->signer);
-
-        // return $reflect->isSubclassOf(Rsa::class)
-        //     || $reflect->isSubclassOf(Ecdsa::class);
         return is_subclass_of($this->signer, Rsa::class)
             || is_subclass_of($this->signer, Ecdsa::class);
     }
 
     protected function getSigningKey()
     {
-        // return $this->isAsymmetric()
-        //     ?
-        //     (new Keychain())->getPrivateKey(
-        //         $this->getPrivateKey(),
-        //         $this->getPassword()
-        //     )
-        //     :
-        //     $this->getSecret();
         if ($this->isAsymmetric()) {
             if (!$privateKey = $this->getPrivateKey()) {
                 throw new JWTException('Private key is not set.');
@@ -195,11 +183,6 @@ class Lcobucci extends Provider
 
     protected function getVerificationKey()
     {
-        // return $this->isAsymmetric()
-        //     ?
-        //     (new Keychain())->getPublicKey($this->getPublicKey())
-        //     :
-        //     $this->getSecret();
         if ($this->isAsymmetric()) {
             if (!$public = $this->getPublicKey()) {
                 throw new JWTException('Public key is not set.');

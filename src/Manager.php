@@ -24,8 +24,8 @@ class Manager
         Provider $provider
     ) {
         $this->blacklist = $blacklist;
-        $this->payload   = $payload;
-        $this->provider  = $provider;
+        $this->payload = $payload;
+        $this->provider = $provider;
     }
 
     /**
@@ -38,7 +38,7 @@ class Manager
     public function encode($customerClaim = [])
     {
         $payload = $this->payload->customer($customerClaim);
-        $token   = $this->provider->encode($payload->get());
+        $token = $this->provider->encode($payload->get());
 
         return new Token($token);
     }
