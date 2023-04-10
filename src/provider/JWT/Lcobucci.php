@@ -96,7 +96,6 @@ class Lcobucci extends Provider
                     ? $claim->getValue()
                     : $claim;
             }
-
         }
         return $claims;
     }

@@ -11,6 +11,7 @@ use think\App;
 use think\Container;
 use think\facade\Config;
 use think\Request;
+
 // use Lcobucci\JWT\Builder;
 // use Lcobucci\JWT\Parser;
 
