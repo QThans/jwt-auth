@@ -68,23 +68,24 @@ class Lcobucci extends Provider
                 $e
             );
         }
-
         return (string) $builder->getToken();
     }
 
     public function decode($token)
     {
         try {
-            $jwt = $this->configuration->parser()->parse($token);
+            $token = $this->configuration->parser()->parse($token);
         } catch (Exception $e) {
             throw new TokenInvalidException('Could not decode token: '
                 . $e->getMessage(), $e->getCode(), $e);
         }
-        if (!$this->configuration->validator()->validate($jwt, ...$this->configuration->validationConstraints())) {
+
+        if (!$this->configuration->validator()->validate($token, ...$this->configuration->validationConstraints())) {
             throw new TokenInvalidException('Token Signature could not be verified.');
         }
+
         $claims = [];
-        foreach ($jwt->claims()->all() as $key => $claim) {
+        foreach ($token->claims()->all() as $key => $claim) {
             if ($claim instanceof DateTimeInterface) {
                 $claims[$key] = (int) $claim->getTimestamp();
             } else {
@@ -167,7 +168,7 @@ class Lcobucci extends Provider
                 throw new JWTException('Private key is not set.');
             }
 
-            return $this->getKey($privateKey, $this->getPassphrase() ?? '');
+            return $this->getKey($privateKey, $this->getPassword() ?? '');
         }
 
         if (!$secret = $this->getSecret()) {

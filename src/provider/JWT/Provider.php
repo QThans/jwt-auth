@@ -16,27 +16,17 @@ class Provider
     public function getPublicKey()
     {
         if (is_file($this->keys['public'])) {
-            return $this->keys['public'];
+            return 'file://'. $this->keys['public'];
         }
-
-        return '-----BEGIN PUBLIC KEY-----'.PHP_EOL.implode(PHP_EOL, str_split($this->keys['public'], 64)).PHP_EOL
-            .'-----END PUBLIC KEY-----';
+        throw new JWTException('Please set public key as the path of pem file.');
     }
 
     public function getPrivateKey()
     {
-        $header = '-----BEGIN PRIVATE KEY-----';
-        $footer = '-----END PRIVATE KEY-----';
         if (is_file($this->keys['private'])) {
-            return $this->keys['private'];
+            return 'file://'.$this->keys['private'];
         }
-        if ($this->keys['password'] != '') {
-            $header = '-----BEGIN ENCRYPTED PRIVATE KEY-----';
-            $footer = '-----END ENCRYPTED PRIVATE KEY-----';
-        }
-
-        return $header.PHP_EOL.implode(PHP_EOL, str_split($this->keys['private'], 64)).PHP_EOL
-            .$footer;
+        throw new JWTException('Please set private key as the path of pem file.');
     }
 
     public function getSecret()
