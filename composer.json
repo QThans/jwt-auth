@@ -3,9 +3,9 @@
     "description": "thinkphp jwt auth composer",
     "type": "library",
     "require": {
-        "php": "^7.4 || ^8.0",
+        "php": ">=8.0",
         "lcobucci/jwt": "^4.3",
-        "topthink/framework": "^5.1.10 || ^6.0.0"
+        "topthink/framework": ">=6.0"
     },
     "license": "MIT",
     "authors": [
