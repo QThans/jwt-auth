@@ -52,7 +52,7 @@ class SecretCommand extends \think\console\Command
             }
         }
 
-        if (strpos(\think\App::VERSION, '5.') === false) {
+        if (strpos(\think\App::VERSION, '5.') !== 0) {
             $config = file_get_contents($configFilePath);
             $config = str_replace('Tp5', 'Tp6', $config);
             file_put_contents($configFilePath, $config);
