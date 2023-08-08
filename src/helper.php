@@ -5,7 +5,7 @@ use thans\jwt\provider\JWT as JWTProvider;
 use think\Console;
 use think\App;
 
-if (strpos(App::VERSION, '6.') !== 0) {
+if (strpos(App::VERSION, '5.') === 0) {
     Console::addDefaultCommands([
         SecretCommand::class
     ]);
